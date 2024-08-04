@@ -17,4 +17,13 @@ func _process(delta):
 	position += velocity * speed * delta
 	position.x = clamp(position.x, spriteHalfWidth, screensize.x - spriteHalfWidth)
 	position.y = clamp(position.y, spriteHalfHeight, screensize.y - spriteHalfHeight)
+	
+	if velocity.length() > 0:
+		$AnimatedSprite2D.animation = "run"
+	else:
+		$AnimatedSprite2D.animation = "idle"
+	
+	if velocity.x != 0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
 	pass

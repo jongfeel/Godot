@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjbfwalpade17"]
+[gd_scene load_steps=15 format=3 uid="uid://bjbfwalpade17"]
 
+[ext_resource type="Script" path="res://coin.gd" id="1_31pfb"]
 [ext_resource type="Texture2D" uid="uid://bh6jqtqd7r7g5" path="res://assets/coin/coin-frame-1.png" id="1_nvxdp"]
 [ext_resource type="Texture2D" uid="uid://ddmv8v1510hgd" path="res://assets/coin/coin-frame-2.png" id="2_jcefb"]
 [ext_resource type="Texture2D" uid="uid://blsvi7shrrsdx" path="res://assets/coin/coin-frame-3.png" id="3_0qrja"]
@@ -58,6 +59,7 @@ radius = 21.9317
 
 [node name="Coin" type="Area2D"]
 position = Vector2(20, 20)
+script = ExtResource("1_31pfb")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

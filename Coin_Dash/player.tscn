@@ -77,6 +77,7 @@ script = ExtResource("1_bp1nm")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jjs5h")
 animation = &"run"

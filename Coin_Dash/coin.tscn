@@ -57,7 +57,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_d871r"]
 radius = 21.9317
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["coins"]]
 position = Vector2(20, 20)
 script = ExtResource("1_31pfb")
 metadata/_edit_group_ = true

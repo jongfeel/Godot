@@ -36,13 +36,13 @@ func spawn_coins():
 			randi_range(0, screensize.x),
 			randi_range(0, screensize.y)
 			)
+	$Sounds/Level.play()
 
 func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
 		level += 1
 		time_left += 5
 		spawn_coins()
-
 
 func _on_game_timer_timeout():
 	time_left -= 1
@@ -56,6 +56,7 @@ func _on_player_hurt():
 func _on_player_pickup():
 	score += 1
 	$HUD.update_score(score)
+	$Sounds/Coin.play()
 	
 func game_over():
 	playing = false
@@ -63,6 +64,7 @@ func game_over():
 	get_tree().call_group("coins", "queue_free")
 	$HUD.show_game_over()
 	$Player.die()
+	$Sounds/End.play()
 	
 func _on_hud_start_game():
 	new_game()

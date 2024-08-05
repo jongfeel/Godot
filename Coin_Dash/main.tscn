@@ -1,17 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://c03u7dx26gae5"]
+[gd_scene load_steps=11 format=3 uid="uid://c03u7dx26gae5"]
 
 [ext_resource type="Texture2D" uid="uid://nnmvin0fk0wb" path="res://assets/grass.png" id="1_s8j83"]
 [ext_resource type="Script" path="res://main.gd" id="1_wbb7x"]
 [ext_resource type="PackedScene" uid="uid://bjbfwalpade17" path="res://coin.tscn" id="2_dvmv5"]
 [ext_resource type="PackedScene" uid="uid://svdbqp5ullc4" path="res://player.tscn" id="2_n6xul"]
+[ext_resource type="PackedScene" uid="uid://d3t3na14jokja" path="res://powerup.tscn" id="3_p2bie"]
 [ext_resource type="PackedScene" uid="uid://djkjoa6n23w76" path="res://hud.tscn" id="4_gxk8w"]
 [ext_resource type="AudioStream" uid="uid://c52qmvcux48ct" path="res://assets/audio/Coin.wav" id="6_uhysl"]
 [ext_resource type="AudioStream" uid="uid://dh6jgntudn25a" path="res://assets/audio/Level.wav" id="7_j1pri"]
 [ext_resource type="AudioStream" uid="uid://c7k7c3v4sq5ur" path="res://assets/audio/EndSound.wav" id="8_yk5vu"]
+[ext_resource type="AudioStream" uid="uid://b2ejh1q0kuayi" path="res://assets/audio/Powerup.wav" id="9_f7k7g"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wbb7x")
 coin_scene = ExtResource("2_dvmv5")
+powerup_scene = ExtResource("3_p2bie")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -39,7 +42,14 @@ stream = ExtResource("7_j1pri")
 [node name="End" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("8_yk5vu")
 
+[node name="PowerupTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PowerupSound" type="AudioStreamPlayer2D" parent="PowerupTimer"]
+stream = ExtResource("9_f7k7g")
+
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]

@@ -43,6 +43,8 @@ func _process(delta):
 		level += 1
 		time_left += 5
 		spawn_coins()
+	if Input.is_key_pressed(KEY_E):
+		game_over()
 
 func _on_game_timer_timeout():
 	time_left -= 1

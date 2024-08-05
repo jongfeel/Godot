@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://djkjoa6n23w76"]
+[gd_scene load_steps=4 format=3 uid="uid://djkjoa6n23w76"]
 
+[ext_resource type="Script" path="res://hud.gd" id="1_qyghy"]
 [ext_resource type="FontFile" uid="uid://bxjw12ur8e1oq" path="res://assets/Kenney Bold.ttf" id="1_vf0iw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_31g7h"]
@@ -9,6 +10,7 @@ shadow_size = 10
 shadow_color = Color(0.960784, 0.211765, 0.317647, 1)
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_qyghy")
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = 14
@@ -45,3 +47,24 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_31g7h")
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -32.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_vf0iw")
+text = "Start"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

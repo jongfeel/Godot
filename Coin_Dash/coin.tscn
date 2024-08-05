@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bmowuqgdo7r73" path="res://assets/coin/coin-frame-10.png" id="10_fdtvt"]
 [ext_resource type="Texture2D" uid="uid://w01oarnq4gka" path="res://assets/coin/coin-frame-11.png" id="11_vtpe7"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5mxiy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_12j3h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d871r"]
@@ -64,7 +64,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_5mxiy")
+sprite_frames = SubResource("SpriteFrames_12j3h")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

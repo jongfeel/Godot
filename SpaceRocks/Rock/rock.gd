@@ -10,7 +10,7 @@ func start(_position, _velocity, _size):
 	size = _size
 	mass = 1.5 * size
 	$Sprite2D.scale = Vector2.ONE * scale_factor * size
-	radius = int($Sprite2D.texture.get_size().x / 2 * $Sprite2D.scale.texture)
+	radius = int($Sprite2D.texture.get_size().x / 2 * $Sprite2D.scale.x)
 	var shape = CircleShape2D.new()
 	shape.radius = radius
 	$CollisionShape2D.shape = shape

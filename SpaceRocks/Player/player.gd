@@ -16,10 +16,14 @@ var state = INIT
 
 var screensize = Vector2.ZERO
 
+var radius
+
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size
 	$GunCooldown.wait_time = fire_rate
+	
+	radius = int($Sprite2D.texture.get_size().x / 2 * $Sprite2D.scale.x)
 
 func _process(_delta):
 	get_input()
@@ -44,8 +48,8 @@ func _physics_process(_delta):
 
 func _integrate_forces(physics_state):
 	var xform = physics_state.transform
-	xform.origin.x = wrapf(xform.origin.x, 0, screensize.x)
-	xform.origin.y = wrapf(xform.origin.y, 0, screensize.y)
+	xform.origin.x = wrapf(xform.origin.x, 0 - radius, screensize.x + radius)
+	xform.origin.y = wrapf(xform.origin.y, 0 - radius, screensize.y + radius)
 	physics_state.transform = xform
 
 func shoot():

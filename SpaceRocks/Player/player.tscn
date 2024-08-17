@@ -10,6 +10,8 @@ radius = 33.0
 
 [node name="Player" type="RigidBody2D"]
 position = Vector2(45, 45)
+max_contacts_reported = 1
+contact_monitor = true
 linear_damp = 1.0
 angular_damp = 5.0
 script = ExtResource("1_87q7h")
@@ -37,5 +39,6 @@ visible = false
 wait_time = 2.0
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]

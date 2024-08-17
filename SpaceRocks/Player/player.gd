@@ -18,6 +18,12 @@ var screensize = Vector2.ZERO
 
 var radius
 
+signal lives_changed
+signal dead
+
+var reset_pos = false
+var lives = 0: set = set_lives
+
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size
@@ -51,6 +57,9 @@ func _integrate_forces(physics_state):
 	xform.origin.x = wrapf(xform.origin.x, 0 - radius, screensize.x + radius)
 	xform.origin.y = wrapf(xform.origin.y, 0 - radius, screensize.y + radius)
 	physics_state.transform = xform
+	if reset_pos:
+		physics_state.transform.origin = screensize / 2
+		reset_pos = false
 
 func shoot():
 	if state == INVULNERABLE:
@@ -63,3 +72,18 @@ func shoot():
 
 func _on_gun_cooldown_timeout():
 	can_shoot = true
+
+func set_lives(value):
+	lives = value
+	lives_changed.emit(lives)
+	if lives <= 0:
+		change_state(DEAD)
+	else:
+		change_state(INVULNERABLE)
+
+func reset():
+	reset_pos = true
+	$Sprite2D.show()
+	lives = 3
+	change_state(ALIVE)
+	 

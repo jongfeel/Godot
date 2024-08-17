@@ -49,7 +49,7 @@ func new_level():
 	for i in level:
 		spawn_rock(3)
 
-func _process(delta):
+func _process(_delta):
 	if not playing:
 		return
 	if get_tree().get_nodes_in_group("rocks").size() == 0:

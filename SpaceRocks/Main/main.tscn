@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://eadmua2gem4h"]
+[gd_scene load_steps=11 format=3 uid="uid://eadmua2gem4h"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_fuhy7"]
 [ext_resource type="Texture2D" uid="uid://dile2c0asgg2d" path="res://assets/space_background.png" id="1_he4fu"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://l1gqjopcm5ct" path="res://Rock/rock.tscn" id="2_rl6kq"]
 [ext_resource type="PackedScene" uid="uid://c1liorpw3pvkl" path="res://Enemy/enemy.tscn" id="3_n6hgb"]
 [ext_resource type="PackedScene" uid="uid://dtbv2o5a0lqvh" path="res://HUD/hud.tscn" id="5_xed5h"]
+[ext_resource type="AudioStream" uid="uid://c4e0pqce5b1ja" path="res://assets/sounds/explosion.wav" id="7_4h2sw"]
+[ext_resource type="AudioStream" uid="uid://d1s6meco6tm8p" path="res://assets/sounds/levelup.ogg" id="8_vjhnm"]
+[ext_resource type="AudioStream" uid="uid://bocl4fhdvihdg" path="res://assets/sounds/Funky-Gameplay_Looping.ogg" id="9_kiitk"]
 
 [sub_resource type="Curve2D" id="Curve2D_3a7y5"]
 _data = {
@@ -37,6 +40,15 @@ layer = 0
 
 [node name="EnemyTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_4h2sw")
+
+[node name="LevelupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vjhnm")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kiitk")
 
 [connection signal="dead" from="Player" to="." method="game_over"]
 [connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]

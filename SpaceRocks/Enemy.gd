@@ -23,6 +23,7 @@ func _physics_process(delta):
 		queue_free()
 
 func shoot():
+	$ShootSound.play()
 	var dir = global_position.direction_to(target.global_position)
 	dir = dir.rotated(randf_range(-bullet_spread, bullet_spread))
 	var b = bullet_scene.instantiate()
@@ -44,6 +45,7 @@ func take_damage(amount):
 		explode()
 		
 func explode():
+	$ExplosionSound.play()
 	speed = 0
 	$GunCoolDown.stop()
 	$CollisionShape2D.set_deferred("disabled", true)

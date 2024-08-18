@@ -24,15 +24,22 @@ signal dead
 var reset_pos = false
 var lives = 0: set = set_lives
 
+signal shield_changed
+
+@export var max_shield = 100.0
+@export var shield_regen = 5.0
+
+var shield = 0: set = set_shield
+
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size
 	$GunCooldown.wait_time = fire_rate
-	
 	radius = int($Sprite2D.texture.get_size().x / 2 * $Sprite2D.scale.x)
 
-func _process(_delta):
+func _process(delta):
 	get_input()
+	shield += shield_regen * delta
 	
 func change_state(new_state):
 	match new_state:
@@ -89,6 +96,7 @@ func _on_gun_cooldown_timeout():
 	can_shoot = true
 
 func set_lives(value):
+	shield = max_shield
 	lives = value
 	lives_changed.emit(lives)
 	if lives <= 0:
@@ -107,12 +115,19 @@ func _on_invulnerability_timer_timeout():
 
 func _on_body_entered(body):
 	if body.is_in_group("rocks"):
+		shield -= body.size * 25
 		body.explode()
-		lives -= 1
-		explode()
 		
 func explode():
 	$Explosion.show()
 	$Explosion/AnimationPlayer.play("explosion")
 	await $Explosion/AnimationPlayer.animation_finished
 	$Explosion.hide()
+
+func set_shield(value):
+	value = min(value, max_shield)
+	shield = value
+	shield_changed.emit(shield / max_shield)
+	if shield <= 0:
+		lives -= 1
+		explode()

@@ -46,6 +46,7 @@ shape = SubResource("CircleShape2D_qicat")
 libraries = {
 "": SubResource("AnimationLibrary_kn5l4")
 }
+autoplay = "flash"
 
 [node name="Explosion" parent="." instance=ExtResource("4_g0gnr")]
 visible = false

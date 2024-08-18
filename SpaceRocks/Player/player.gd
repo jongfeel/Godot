@@ -61,10 +61,12 @@ func change_state(new_state):
 	state = new_state
 
 func get_input():
+	$Exhaust.emitting = false
 	thrust = Vector2.ZERO
 	if state in [DEAD, INIT]:
 		return
 	if Input.is_action_pressed("thrust"):
+		$Exhaust.emitting = true
 		thrust = transform.x * engine_power
 		if not $EngineSound.playing:
 			$EngineSound.play()

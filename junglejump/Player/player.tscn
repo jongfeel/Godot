@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bua1qtuhk88jk"]
+
+[node name="Player" type="CharacterBody2D"]
+metadata/_edit_group_ = true

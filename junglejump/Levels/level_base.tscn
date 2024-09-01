@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg26ux8caovht"]
+[gd_scene load_steps=6 format=3 uid="uid://dg26ux8caovht"]
 
 [ext_resource type="Script" path="res://Levels/level_base.gd" id="1_2amky"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_htugp"]
 [ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_xwewf"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_pudjw"]
+[ext_resource type="PackedScene" uid="uid://bua1qtuhk88jk" path="res://Player/player.tscn" id="5_4o62i"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_2amky")
@@ -11,11 +12,17 @@ script = ExtResource("1_2amky")
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("1_htugp")
 format = 2
+layer_0/tile_data = PackedInt32Array(196612, 65536, 1, 196613, 65536, 1, 6, 196608, 1, 7, 196608, 1, 8, 196608, 1, 9, 196608, 1, 10, 196608, 1, -393220, 983040, 14, -393221, 983040, 14, -393222, 983040, 14, -393223, 983040, 14, -393224, 983040, 14, -524298, 1114112, 14, -524299, 1114112, 14, -524300, 1114112, 14, -524301, 1114112, 14, -524302, 1114112, 14, 65532, 65536, 1, 65533, 65536, 1, 65534, 65536, 1, 65535, 65536, 1, 0, 65536, 1, 1, 65536, 1, 2, 65536, 1, 3, 65536, 1, -196597, 196608, 1, -196596, 196608, 1, -196595, 196608, 1, -393206, 196608, 1, -393207, 196608, 1, -393208, 196608, 1, -524281, 196608, 1, -524282, 196608, 1, -524283, 196608, 1, -655356, 196608, 1, -655357, 196608, 1, -655358, 196608, 1, -786431, 196608, 1, -786432, 196608, 1, -720897, 196608, 1, -589827, 196608, 1, -589828, 196608, 1, -589829, 196608, 1)
 
 [node name="Items" type="TileMap" parent="."]
 tile_set = ExtResource("2_xwewf")
 format = 2
+layer_0/tile_data = PackedInt32Array(-65527, 0, 0, -65526, 0, 0, -458759, 0, 0, -589837, 1, 0, -589838, 1, 0)
 
 [node name="Danger" type="TileMap" parent="."]
 tile_set = ExtResource("3_pudjw")
 format = 2
+
+[node name="Player" parent="." instance=ExtResource("5_4o62i")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]

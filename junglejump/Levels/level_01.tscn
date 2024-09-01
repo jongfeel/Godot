@@ -4,5 +4,5 @@
 
 [node name="Level01" instance=ExtResource("1_dy8or")]
 
-[node name="Danger" parent="." index="2" groups=["danger"]]
+[node name="Danger" parent="." index="3" groups=["danger"]]
 layer_0/tile_data = PackedInt32Array(-458744, 589824, 12, -4, 589824, 12, 131076, 589824, 12)

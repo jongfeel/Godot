@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bua1qtuhk88jk"]
+[gd_scene load_steps=12 format=3 uid="uid://bua1qtuhk88jk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6fyna"]
 [ext_resource type="Texture2D" uid="uid://548wpxgxpadl" path="res://assets/player_sheet.png" id="1_h3e48"]
+[ext_resource type="PackedScene" uid="uid://dg26ux8caovht" path="res://Levels/level_base.tscn" id="3_dxxrw"]
 
 [sub_resource type="Animation" id="Animation_hmdj6"]
 length = 0.001
@@ -140,3 +141,7 @@ shape = SubResource("RectangleShape2D_csshw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
+
+[node name="LevelBase" parent="." instance=ExtResource("3_dxxrw")]
+
+[node name="SpawnPoint" type="Marker2D" parent="LevelBase"]

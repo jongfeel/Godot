@@ -140,5 +140,6 @@ shape = SubResource("RectangleShape2D_csshw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
+limit_top = 0
 
 [node name="SpawnPoint" type="Marker2D" parent="."]

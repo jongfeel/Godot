@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg26ux8caovht"]
+
+[ext_resource type="Script" path="res://Levels/level_base.gd" id="1_2amky"]
+[ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_htugp"]
+[ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_xwewf"]
+[ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_pudjw"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_2amky")
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource("1_htugp")
+format = 2
+
+[node name="Items" type="TileMap" parent="."]
+tile_set = ExtResource("2_xwewf")
+format = 2
+
+[node name="Danger" type="TileMap" parent="."]
+tile_set = ExtResource("3_pudjw")
+format = 2

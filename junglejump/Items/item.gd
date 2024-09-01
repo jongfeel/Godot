@@ -12,6 +12,6 @@ func init(type, _position):
 	position = _position
 	
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	picked_up.emit()
 	queue_free()

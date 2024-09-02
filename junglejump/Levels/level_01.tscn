@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl8lwdfy4glq8"]
+[gd_scene load_steps=3 format=3 uid="uid://cl8lwdfy4glq8"]
 
 [ext_resource type="PackedScene" uid="uid://dg26ux8caovht" path="res://Levels/level_base.tscn" id="1_dy8or"]
+[ext_resource type="PackedScene" uid="uid://dnhwgka125b8c" path="res://Enemies/enemy.tscn" id="2_gbdnc"]
 
 [node name="Level01" instance=ExtResource("1_dy8or")]
 
 [node name="Danger" parent="." index="3" groups=["danger"]]
-layer_0/tile_data = PackedInt32Array(-458744, 589824, 12, -4, 589824, 12, 131076, 589824, 12)
+layer_0/tile_data = PackedInt32Array(851980, 589824, 12, 1048596, 589824, 12, 458776, 589824, 12, 851987, 458752, 12)
+
+[node name="Player" parent="." index="4"]
+position = Vector2(371, 217)
+
+[node name="SpawnPoint" parent="." index="5"]
+position = Vector2(371, 207)
+
+[node name="Enemy" parent="." index="6" instance=ExtResource("2_gbdnc")]
+position = Vector2(263, 208)

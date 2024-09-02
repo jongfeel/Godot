@@ -59,4 +59,5 @@ position = Vector2(266, 204)
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("8_24y1g")]
 
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]

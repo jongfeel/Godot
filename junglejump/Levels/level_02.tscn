@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b54pthac4yv5r"]
+
+[ext_resource type="PackedScene" uid="uid://dg26ux8caovht" path="res://Levels/level_base.tscn" id="1_kcruo"]
+[ext_resource type="PackedScene" uid="uid://dnhwgka125b8c" path="res://Enemies/enemy.tscn" id="2_m15pn"]
+
+[node name="Level02" instance=ExtResource("1_kcruo")]
+
+[node name="World" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(327682, 196608, 1, 327683, 196608, 1, 327684, 196608, 1, 327685, 196608, 1, 327686, 196608, 1, 458760, 196608, 1, 458761, 196608, 1, 458762, 196608, 1, 458763, 196608, 1, 458764, 196608, 1, 262162, 196608, 1, 262163, 196608, 1, 262164, 196608, 1, 327681, 196608, 1, 327680, 196608, 1, 458759, 196608, 1, 458765, 196608, 1, 458766, 196608, 1, 458767, 196608, 1, 458768, 196608, 1, 262165, 196608, 1, 262166, 196608, 1, 589849, 1245184, 1, 655383, 1245184, 1, 720917, 1245184, 1, 786451, 1245184, 1, 851985, 1245184, 1, 851984, 327680, 1, 851983, 327680, 1, 851980, 327680, 1, 851979, 327680, 1, 851978, 327680, 1, 851977, 327680, 1, 851976, 327680, 1, 851975, 327680, 1, 851974, 327680, 1, 851973, 327680, 1, 851972, 327680, 1)
+
+[node name="Items" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(262144, 2, 3, 196630, 0, 0, 786448, 1, 0, 393230, 1, 0, 786442, 1, 0)
+
+[node name="Danger" parent="." index="3" groups=["danger"]]
+layer_0/tile_data = PackedInt32Array(393223, 458752, 12, 393232, 458752, 12, 786444, 458752, 12, 786436, 458752, 12)
+
+[node name="Player" parent="." index="4"]
+position = Vector2(34, 78)
+
+[node name="SpawnPoint" parent="." index="5"]
+position = Vector2(36, 73)
+
+[node name="Enemy" parent="." index="6" instance=ExtResource("2_m15pn")]
+position = Vector2(162, 99)
+
+[node name="Enemy2" parent="." index="7" instance=ExtResource("2_m15pn")]
+position = Vector2(131, 197)

@@ -34,3 +34,6 @@ func _on_item_picked_up():
 func set_score(value):
 	score = value
 	score_changed.emit(score)
+
+func _on_player_died():
+	GameState.restart()

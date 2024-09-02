@@ -21,3 +21,12 @@ func _physics_process(delta):
 			
 	if position.y > 10000:
 		queue_free()
+
+func take_damage():
+	$AnimationPlayer.play("death")
+	$CollisionShape2D.set_deferred("disabled", true)
+	set_physics_process(false)
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "death":
+		queue_free()

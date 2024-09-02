@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnhwgka125b8c"]
+[gd_scene load_steps=9 format=3 uid="uid://dnhwgka125b8c"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_fvg8w"]
 [ext_resource type="Texture2D" uid="uid://cfgyk3tgdfcvv" path="res://assets/sprites/opossum.png" id="1_u1lg2"]
+[ext_resource type="Texture2D" uid="uid://c4w7bwdb2jqbg" path="res://assets/sprites/enemy-death.png" id="3_u6x3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmte0"]
 size = Vector2(24, 20)
@@ -62,9 +63,39 @@ tracks/1/keys = {
 "values": [0, 5]
 }
 
+[sub_resource type="Animation" id="Animation_nb46x"]
+resource_name = "death"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_u6x3u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_53nem"]
 _data = {
 "RESET": SubResource("Animation_fx5qd"),
+"death": SubResource("Animation_nb46x"),
 "walk": SubResource("Animation_7mkpa")
 }
 
@@ -86,3 +117,5 @@ libraries = {
 "": SubResource("AnimationLibrary_53nem")
 }
 autoplay = "walk"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

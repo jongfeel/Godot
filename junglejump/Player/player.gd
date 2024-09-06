@@ -23,14 +23,17 @@ func change_state(new_state):
 		RUN:
 			$AnimationPlayer.play("run")
 		HURT:
+			$HURT_AudioStreamPlayer2D.play()
 			$AnimationPlayer.play("hurt")
 			velocity.y = -200
 			velocity.x = -100 * sign(velocity.x)
 			life -= 1
-			await get_tree().create_timer(0.5).timeout
+			if life > 0:
+				await get_tree().create_timer(0.5).timeout
 			change_state(IDLE)
 		JUMP:
 			$AnimationPlayer.play("jump_up")
+			$JUMP_AudioStreamPlayer2D.play()
 		DEAD:
 			died.emit()
 			hide()
@@ -75,6 +78,7 @@ func _physics_process(delta):
 			hurt()
 		if collision.get_collider().is_in_group("enemies"):
 			if position.y < collision.get_collider().position.y:
+				$ENEMY_HIT_AudioStreamPlayer2D.play()
 				collision.get_collider().take_damage()
 				velocity.y = -200
 			else:

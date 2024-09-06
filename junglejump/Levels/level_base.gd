@@ -37,6 +37,7 @@ func spawn_items():
 		
 func _on_item_picked_up():
 	score += 1
+	$ITEM_PICKED_UP_AudioStreamPlayer2D.play()
 	
 func set_score(value):
 	score = value

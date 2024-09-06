@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bua1qtuhk88jk"]
+[gd_scene load_steps=14 format=3 uid="uid://bua1qtuhk88jk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6fyna"]
 [ext_resource type="Texture2D" uid="uid://548wpxgxpadl" path="res://assets/player_sheet.png" id="1_h3e48"]
+[ext_resource type="AudioStream" uid="uid://cgupkds0skgmt" path="res://assets/audio/hurt1.ogg" id="3_4oxos"]
+[ext_resource type="AudioStream" uid="uid://x8iqphpj5om7" path="res://assets/audio/enemy_hit.ogg" id="4_0kflm"]
+[ext_resource type="AudioStream" uid="uid://bdl5y5tbpbu6y" path="res://assets/audio/jump4.ogg" id="5_xg08x"]
 
 [sub_resource type="Animation" id="Animation_hmdj6"]
 length = 0.001
@@ -143,3 +146,12 @@ zoom = Vector2(2.5, 2.5)
 limit_top = 0
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="HURT_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4oxos")
+
+[node name="ENEMY_HIT_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0kflm")
+
+[node name="JUMP_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xg08x")

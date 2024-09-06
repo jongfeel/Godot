@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://kyekb6ggent3"]
+[gd_scene load_steps=11 format=3 uid="uid://kyekb6ggent3"]
 
 [ext_resource type="Texture2D" uid="uid://gxstbq0g1kbu" path="res://assets/environment/back.png" id="1_cx8lx"]
 [ext_resource type="Script" path="res://Title/title.gd" id="1_ujqnc"]
 [ext_resource type="Texture2D" uid="uid://cwtasj6sqdfin" path="res://assets/environment/middle.png" id="2_x51wx"]
 [ext_resource type="FontFile" uid="uid://ddlxdu3kksqlf" path="res://assets/Kenney Thick.ttf" id="3_y38xf"]
+[ext_resource type="AudioStream" uid="uid://sgemn7iks4k" path="res://assets/audio/Intro Theme.ogg" id="5_360bd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yw25q"]
 font = ExtResource("3_y38xf")
@@ -195,3 +196,7 @@ libraries = {
 "": SubResource("AnimationLibrary_3vigs")
 }
 autoplay = "intro"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_360bd")
+autoplay = true

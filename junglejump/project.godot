@@ -23,6 +23,7 @@ GameState="*res://Main/game_state.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/main_scene="res://Player/player.tscn"
 
 [input]
 

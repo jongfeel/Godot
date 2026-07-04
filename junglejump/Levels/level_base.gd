@@ -12,6 +12,7 @@ func _ready():
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	spawn_items()
+	create_ladders()
 	
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
@@ -48,3 +49,35 @@ func _on_player_died():
 
 func _on_door_entered(body):
 	GameState.next_level()
+	
+func create_ladders():
+	var top_cells = {}
+	var cells = $World.get_used_cells(0)
+	for cell in cells:
+		var data = $World.get_cell_tile_data(0, cell)
+		if data.get_custom_data("special") == "ladder":
+			var c = CollisionShape2D.new()
+			$Ladders.add_child(c)
+			c.position = $World.map_to_local(cell)
+			var s = RectangleShape2D.new()
+			s.size = Vector2(8, 16)
+			c.shape = s
+			if not top_cells.has(cell.x) or cell.y < top_cells[cell.x]:
+				top_cells[cell.x] = cell.y
+	for x in top_cells:
+		create_ladder_top(Vector2i(x, top_cells[x]))
+
+func create_ladder_top(cell):
+	var cell_size = $World.tile_set.tile_size
+	var body = StaticBody2D.new()
+	body.collision_layer = 1
+	body.collision_mask = 0
+	add_child(body)
+	body.position = $World.map_to_local(cell)
+	var c = CollisionShape2D.new()
+	c.one_way_collision = true
+	var s = RectangleShape2D.new()
+	s.size = Vector2(cell_size.x, 2)
+	c.shape = s
+	c.position = Vector2(0, -cell_size.y / 2.0 + s.size.y / 2.0)
+	body.add_child(c)

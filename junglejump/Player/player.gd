@@ -6,6 +6,10 @@ signal died
 @export var gravity = 750
 @export var run_speed = 150
 @export var jump_speed = -300
+@export var max_jumps = 2
+@export var double_jump_factor = 1.5
+
+var jump_count = 0
 
 enum { IDLE, RUN, JUMP, HURT, DEAD }
 var state = IDLE
@@ -34,6 +38,7 @@ func change_state(new_state):
 		JUMP:
 			$AnimationPlayer.play("jump_up")
 			$JUMP_AudioStreamPlayer2D.play()
+			jump_count = 1
 		DEAD:
 			died.emit()
 			hide()
@@ -44,7 +49,7 @@ func get_input():
 
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
-	var jump = Input.is_action_pressed("jump")
+	var jump = Input.is_action_just_pressed("jump")
 	
 	velocity.x = 0
 	if right:
@@ -53,6 +58,11 @@ func get_input():
 	if left:
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
+	if jump and state == JUMP and jump_count < max_jumps and jump_count > 0:
+		$JUMP_AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("jump_up")
+		velocity.y = jump_speed / double_jump_factor
+		jump_count += 1
 	if jump and is_on_floor():
 		change_state(JUMP)
 		velocity.y = jump_speed
@@ -86,6 +96,7 @@ func _physics_process(delta):
 	
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
+		jump_count = 0
 		
 	if state == JUMP and velocity.y	> 0:
 		$AnimationPlayer.play("jump_down")

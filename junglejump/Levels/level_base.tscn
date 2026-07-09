@@ -68,7 +68,7 @@ autoplay = true
 stream = ExtResource("10_wpkap")
 
 [node name="Ladders" type="Area2D" parent="." unique_id=348686256]
-collision_layer = 9
+collision_layer = 0
 collision_mask = 2
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]

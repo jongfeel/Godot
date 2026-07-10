@@ -145,8 +145,10 @@ func hurt():
 
 
 func _on_ladders_body_entered(body: Node2D) -> void:
-	is_on_ladder = true
+	if body == self:
+		is_on_ladder = true
 
 
 func _on_ladders_body_exited(body: Node2D) -> void:
-	is_on_ladder = false
+	if body == self:
+		is_on_ladder = false

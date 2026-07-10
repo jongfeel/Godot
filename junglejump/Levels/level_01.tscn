@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dg26ux8caovht" path="res://Levels/level_base.tscn" id="1_dy8or"]
 [ext_resource type="PackedScene" uid="uid://dnhwgka125b8c" path="res://Enemies/enemy.tscn" id="2_gbdnc"]
+[ext_resource type="PackedScene" uid="uid://wru34oht444o" path="res://Platforms/moving_platform.tscn" id="3_er0or"]
 
 [node name="Level01" unique_id=2066869993 instance=ExtResource("1_dy8or")]
 
@@ -22,3 +23,8 @@ position = Vector2(371, 207)
 
 [node name="Enemy" parent="." index="6" unique_id=24275081 instance=ExtResource("2_gbdnc")]
 position = Vector2(263, 208)
+
+[node name="MovingPlatform" parent="." index="11" unique_id=2009314235 instance=ExtResource("3_er0or")]
+position = Vector2(240, 176)
+offset = Vector2(96, 0)
+duration = 5.0

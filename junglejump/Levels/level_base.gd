@@ -6,6 +6,7 @@ var item_scene = load("res://Items/item.tscn")
 var door_scene = load("res://Items/door.tscn")
 
 var score = 0: set = set_score
+var fall_limit = 0.0
 
 func _ready():
 	$Items.hide()
@@ -13,7 +14,12 @@ func _ready():
 	set_camera_limits()
 	spawn_items()
 	create_ladders()
-	
+	fall_limit = $World.get_used_rect().end.y * $World.tile_set.tile_size.y
+
+func _process(_delta):
+	if $Player.life > 0 and $Player.position.y > fall_limit:
+		$Player.life = 0
+
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
 	var cell_size = $World.tile_set.tile_size

@@ -37,7 +37,7 @@ func change_state(new_state):
 			life -= 1
 			if life > 0:
 				await get_tree().create_timer(0.5).timeout
-			change_state(IDLE)
+				change_state(IDLE)
 		JUMP:
 			$AnimationPlayer.play("jump_up")
 			$JUMP_AudioStreamPlayer2D.play()

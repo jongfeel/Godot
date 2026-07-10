@@ -73,5 +73,6 @@ collision_mask = 2
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
 [connection signal="body_entered" from="Ladders" to="Player" method="_on_ladders_body_entered"]
 [connection signal="body_exited" from="Ladders" to="Player" method="_on_ladders_body_exited"]

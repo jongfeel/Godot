@@ -6,7 +6,25 @@
 rough = true
 bounce = 0.5
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yye3d"]
+
+[sub_resource type="Sky" id="Sky_ln22a"]
+sky_material = SubResource("ProceduralSkyMaterial_yye3d")
+
+[sub_resource type="Environment" id="Environment_ln22a"]
+background_mode = 2
+background_energy_multiplier = 3.84
+sky = SubResource("Sky_ln22a")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.11
+reflected_light_source = 2
+
 [node name="Hole" type="Node3D" unique_id=10753398]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1395984302]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
 
 [node name="GridMap" type="GridMap" parent="." unique_id=198544162]
 mesh_library = ExtResource("1_ln22a")
@@ -18,3 +36,6 @@ data = {
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=629442586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.902955, 2.26505, 10.492782)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1521819101]
+environment = SubResource("Environment_ln22a")

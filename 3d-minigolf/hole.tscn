@@ -55,4 +55,4 @@ shape = SubResource("CylinderShape3D_mih3r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488662, 0.85620403, 5.9747605)
 
 [node name="Ball" parent="." unique_id=1294271037 instance=ExtResource("2_1s0jb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4856186, 1.3228927, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7434311, 1.3228927, 1.4480076)

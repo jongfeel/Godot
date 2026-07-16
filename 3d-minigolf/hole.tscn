@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d00paw0untce8"]
 
 [ext_resource type="MeshLibrary" uid="uid://boqpwqm1cph87" path="res://golf_tiles.meshlib" id="1_ln22a"]
+[ext_resource type="PackedScene" uid="uid://bhkrakk3ieqi6" path="res://ball.tscn" id="2_1s0jb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4rvs"]
 rough = true
@@ -52,3 +53,6 @@ shape = SubResource("CylinderShape3D_mih3r")
 
 [node name="Tee" type="Marker3D" parent="." unique_id=1321567113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488662, 0.85620403, 5.9747605)
+
+[node name="Ball" parent="." unique_id=1294271037 instance=ExtResource("2_1s0jb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4856186, 1.3228927, 6)

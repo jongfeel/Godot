@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://boqpwqm1cph87" path="res://golf_tiles.meshlib" id="1_ln22a"]
 [ext_resource type="PackedScene" uid="uid://bhkrakk3ieqi6" path="res://ball.tscn" id="2_1s0jb"]
+[ext_resource type="PackedScene" uid="uid://c8cbc2rtt0pis" path="res://arrow.tscn" id="3_cki6r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4rvs"]
 rough = true
@@ -56,3 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488662, 0.85620403, 5.9747
 
 [node name="Ball" parent="." unique_id=1294271037 instance=ExtResource("2_1s0jb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7434311, 1.3228927, 1.4480076)
+
+[node name="Arrow" parent="." unique_id=990052558 instance=ExtResource("3_cki6r")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.4765377, 0.8705983, 5.9624)

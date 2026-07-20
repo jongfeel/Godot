@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d00paw0untce8"]
 
+[ext_resource type="Script" uid="uid://dm4rxyidhwv3k" path="res://hole.gd" id="1_cr06n"]
 [ext_resource type="MeshLibrary" uid="uid://boqpwqm1cph87" path="res://golf_tiles.meshlib" id="1_ln22a"]
 [ext_resource type="PackedScene" uid="uid://bhkrakk3ieqi6" path="res://ball.tscn" id="2_1s0jb"]
 [ext_resource type="PackedScene" uid="uid://c8cbc2rtt0pis" path="res://arrow.tscn" id="3_cki6r"]
@@ -27,6 +28,7 @@ height = 0.25
 radius = 0.08
 
 [node name="Hole" type="Node3D" unique_id=10753398]
+script = ExtResource("1_cr06n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1395984302]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -63,3 +65,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7434311, 1.3228927, 1.44800
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.4765377, 0.8705983, 5.9624)
 
 [node name="UI" parent="." unique_id=933499048 instance=ExtResource("4_aqv4r")]
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

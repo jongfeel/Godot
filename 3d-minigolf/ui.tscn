@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://6voinnuhm3gg"]
 
+[ext_resource type="Script" uid="uid://jww3vyvxyhdc" path="res://ui.gd" id="1_27fn8"]
 [ext_resource type="FontFile" uid="uid://6b3ku588yurr" path="res://assets/Xolonium-Regular.ttf" id="1_m6e0p"]
 [ext_resource type="Texture2D" uid="uid://bhewwfrqbi6kl" path="res://assets/bar_green.png" id="2_27fn8"]
 
 [node name="UI" type="CanvasLayer" unique_id=933499048]
+script = ExtResource("1_27fn8")
 
 [node name="Message" type="Label" parent="." unique_id=2030358589]
 visible = false

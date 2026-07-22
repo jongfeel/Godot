@@ -44,7 +44,7 @@ data = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=629442586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.902955, 2.26505, 10.492782)
+transform = Transform3D(1, 0, 0, 0, 0.3164015, 0.9486254, 0, -0.9486254, 0.3164015, 1.902955, 5.5299954, 6.4667597)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1521819101]
 environment = SubResource("Environment_ln22a")
@@ -67,3 +67,4 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.4765377, 0.870598
 [node name="UI" parent="." unique_id=933499048 instance=ExtResource("4_aqv4r")]
 
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]
+[connection signal="stopped" from="Ball" to="." method="_on_ball_stopped"]

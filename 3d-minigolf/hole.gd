@@ -6,6 +6,7 @@ enum { AIM, SET_POWER, SHOOT, WIN }
 @export var angle_speed = 1.1
 
 var angle_change = 1
+var arrow_base_angle = 0.0
 var power = 0
 var power_change = 1
 var shots = 0
@@ -23,13 +24,13 @@ func change_state(new_state: int) -> void:
 	match state:
 		AIM:
 			$Arrow.position = $Ball.position
+			$Arrow.rotation.y = arrow_base_angle
 			$Arrow.show()
 		SET_POWER:
 			power = 0
 		SHOOT:
 			$Arrow.hide()
-			# To do
-			# $Ball.shoot($Arrow.rotation.y, power / 15)
+			$Ball.shoot($Arrow.rotation.y, power / 15)
 			shots += 1
 			$UI.update_shots(shots)
 		WIN:
@@ -57,9 +58,9 @@ func _process(delta: float) -> void:
 
 func animate_arrow(delta: float) -> void:
 	$Arrow.rotation.y += angle_speed * angle_change * delta
-	if $Arrow.rotation.y > PI / 2:
+	if $Arrow.rotation.y > arrow_base_angle + PI / 2:
 		angle_change = -1
-	if $Arrow.rotation.y < -PI / 2:
+	if $Arrow.rotation.y < arrow_base_angle - PI / 2:
 		angle_change = 1
 		
 func animate_power(delta: float) -> void:
@@ -75,3 +76,9 @@ func _on_hole_body_entered(body: Node3D) -> void:
 	if body.name == "Ball":
 		print("win!")
 		change_state(WIN)
+
+
+func _on_ball_stopped(angle: float) -> void:
+	if state == SHOOT:
+		arrow_base_angle = angle
+		change_state(AIM)

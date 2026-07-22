@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhkrakk3ieqi6" path="res://ball.tscn" id="2_1s0jb"]
 [ext_resource type="PackedScene" uid="uid://c8cbc2rtt0pis" path="res://arrow.tscn" id="3_cki6r"]
 [ext_resource type="PackedScene" uid="uid://6voinnuhm3gg" path="res://ui.tscn" id="4_aqv4r"]
+[ext_resource type="PackedScene" uid="uid://c7iksisfr00ov" path="res://camera_gimbal.tscn" id="6_q7xbi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4rvs"]
 rough = true
@@ -43,9 +44,6 @@ data = {
 "cells": PackedInt32Array(65535, 6, 22, 65535, 5, 655384, 65535, 4, 655384, 65535, 3, 655384, 65535, 2, 655384, 65535, 1, 0, 0, 1, 1441796, 1, 1, 1441817, 2, 1, 1441822, 3, 1, 1441794, 3, 2, 655392, 3, 3, 655392, 3, 4, 655393, 3, 5, 655388, 3, 6, 655387, 3, 7, 1)
 }
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=629442586]
-transform = Transform3D(1, 0, 0, 0, 0.3164015, 0.9486254, 0, -0.9486254, 0.3164015, 1.902955, 5.5299954, 6.4667597)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1521819101]
 environment = SubResource("Environment_ln22a")
 
@@ -65,6 +63,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7434311, 1.3228927, 1.44800
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.4765377, 0.8705983, 5.9624)
 
 [node name="UI" parent="." unique_id=933499048 instance=ExtResource("4_aqv4r")]
+
+[node name="CameraGimbal" parent="." unique_id=902299175 instance=ExtResource("6_q7xbi")]
 
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]
 [connection signal="stopped" from="Ball" to="." method="_on_ball_stopped"]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8cbc2rtt0pis" path="res://arrow.tscn" id="3_cki6r"]
 [ext_resource type="PackedScene" uid="uid://6voinnuhm3gg" path="res://ui.tscn" id="4_aqv4r"]
 [ext_resource type="PackedScene" uid="uid://c7iksisfr00ov" path="res://camera_gimbal.tscn" id="6_q7xbi"]
+[ext_resource type="PackedScene" path="res://hole_2.tscn" id="7_hole2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4rvs"]
 rough = true
@@ -30,6 +31,7 @@ radius = 0.08
 
 [node name="Hole" type="Node3D" unique_id=10753398]
 script = ExtResource("1_cr06n")
+next_hole = ExtResource("7_hole2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1395984302]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

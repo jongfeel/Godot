@@ -4,6 +4,7 @@ enum { AIM, SET_POWER, SHOOT, WIN }
 
 @export var power_speed = 100
 @export var angle_speed = 1.1
+@export var next_hole : PackedScene
 
 var angle_change = 1
 var arrow_base_angle = 0.0
@@ -36,7 +37,11 @@ func change_state(new_state: int) -> void:
 		WIN:
 			$Ball.hide()
 			$Arrow.hide()
-			$UI.show_message("Win!")
+			await get_tree().create_timer(1).timeout
+			if next_hole:
+				get_tree().change_scene_to_packed(next_hole)
+			else:
+				$UI.show_message("Win!")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):

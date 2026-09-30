@@ -1,10 +1,24 @@
 extends Area3D
 
+var move_x = false
+var move_y = false
+
+var move_amount = 2.5
+var move_speed = 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Label3D.hide()
-
+	var tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE)
+	tween.stop()
+	if move_y:
+		tween.tween_property($CollisionShape3D, "position:y", -move_amount, move_speed)
+		tween.tween_property($CollisionShape3D, "position:y", move_amount, move_speed)
+		tween.play()
+	if move_x:
+		tween.tween_property($CollisionShape3D, "position:x", -move_amount, move_speed)
+		tween.tween_property($CollisionShape3D, "position:x", move_amount, move_speed)
+		tween.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ee3ykmyydtfc" path="res://plane.tscn" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://df4hosstmld1h" path="res://assets/styled_sky.hdr" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://c34ipkbi3p5u5" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://pr855e27ri0" path="res://chunk.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://ckgaujh1osvas" path="res://camera_3d.gd" id="4_1bvp3"]
 
@@ -17,6 +18,7 @@ sky = SubResource("Sky_lquwl")
 glow_enabled = true
 
 [node name="Main" type="Node3D" unique_id=1551724267]
+script = ExtResource("1_lquwl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1181140130]
 environment = SubResource("Environment_7mycd")

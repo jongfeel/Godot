@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c7swuxr0owtv6" path="res://plane.gd" id="1_dpar4"]
 [ext_resource type="PackedScene" uid="uid://b0u8i0vqnnt3o" path="res://assets/cartoon_plane.glb" id="1_s46f0"]
+[ext_resource type="Texture2D" uid="uid://brqyeaog6hndf" path="res://assets/smoke/smoke_01.png" id="3_cejrt"]
+[ext_resource type="Texture2D" uid="uid://bd5142uhx5c12" path="res://assets/smoke/smoke_02.png" id="4_afyqo"]
+[ext_resource type="Texture2D" uid="uid://bju4ix7bfdhvx" path="res://assets/smoke/smoke_03.png" id="5_gwo5b"]
+[ext_resource type="Texture2D" uid="uid://cc03doacmvahi" path="res://assets/smoke/smoke_04.png" id="6_ye4pl"]
+[ext_resource type="Texture2D" uid="uid://bhmxh20snuyhg" path="res://assets/smoke/smoke_05.png" id="7_a6rsd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_16mm7"]
 height = 3.5
@@ -9,6 +14,29 @@ radius = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16mm7"]
 size = Vector3(7, 1, 2)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpar4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cejrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_afyqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gwo5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ye4pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a6rsd")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Plane" type="CharacterBody3D" unique_id=2078837377]
 collision_layer = 2
@@ -24,3 +52,9 @@ shape = SubResource("CylinderShape3D_16mm7")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1988737318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_16mm7")
+
+[node name="Explosion" type="AnimatedSprite3D" parent="." unique_id=1196652447]
+visible = false
+pixel_size = 0.5
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_dpar4")

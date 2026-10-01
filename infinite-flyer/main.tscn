@@ -28,6 +28,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Plane" parent="." unique_id=2078837377 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="Chunk" parent="." unique_id=150468099 instance=ExtResource("2_h2yge")]
 

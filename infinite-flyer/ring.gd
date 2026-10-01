@@ -6,6 +6,10 @@ var move_y = false
 var move_amount = 2.5
 var move_speed = 2.0
 
+const score_50 = 50
+const score_100 = 100
+const score_200 = 200
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Label3D.hide()
@@ -29,12 +33,18 @@ func _on_body_entered(body: Node3D) -> void:
 	$CollisionShape3D/MeshInstance3D.hide()
 	var d = global_position.distance_to(body.global_position)
 	if d < 2.0:
-		$Label3D.text = "200"
+		$Label3D.text = str(score_200)
 		$Label3D.modulate = Color(1,1,0)
+		body.fuel = 10
+		body.score += score_200
 	elif d > 3.5:
-		$Label3D.text = "50"
+		$Label3D.text = str(score_50)
+		body.fuel += 1
+		body.score += score_50
 	else:
-		$Label3D.text = "100"
+		$Label3D.text = str(score_100)
+		body.fuel += 2.5
+		body.score += score_100
 	$Label3D.show()
 	
 	var tween = create_tween().set_parallel()

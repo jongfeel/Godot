@@ -4,12 +4,21 @@ extends CharacterBody3D
 @export var roll_speed = 2.5
 @export var level_speed = 4.0
 @export var forward_speed = 25
+@export var fuel_burn = 1.0
+
+var max_fuel = 10.0
+var fuel = 10.0:
+	set = set_fuel
+var score = 0:
+	set = set_score
 
 var roll_input = 0
 var pitch_input = 0
 var max_altitude = 20
 
 signal dead
+signal score_changed
+signal fuel_changed
 
 func get_input(delta) -> void:
 	pitch_input = Input.get_axis("pitch_down", "pitch_up")
@@ -28,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if get_slide_collision_count() > 0:
 		die()
+	fuel -= fuel_burn * delta
 
 func die() -> void:
 	set_physics_process(false)
@@ -38,3 +48,13 @@ func die() -> void:
 	$Explosion.hide()
 	dead.emit()
 	get_tree().reload_current_scene()
+
+func set_fuel(value):
+	fuel = min(value, max_fuel)
+	fuel_changed.emit(fuel)
+	if fuel <= 0:
+		die()
+
+func set_score(value):
+	score = value
+	score_changed.emit(score)

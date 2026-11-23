@@ -15,6 +15,7 @@ var score = 0:
 var roll_input = 0
 var pitch_input = 0
 var max_altitude = 20
+var is_dead = false
 
 signal dead
 signal score_changed
@@ -40,6 +41,9 @@ func _physics_process(delta: float) -> void:
 	fuel -= fuel_burn * delta
 
 func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
 	set_physics_process(false)
 	$cartoon_plane.hide()
 	$Explosion.show()
@@ -47,7 +51,7 @@ func die() -> void:
 	await $Explosion.animation_finished
 	$Explosion.hide()
 	dead.emit()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func set_fuel(value):
 	fuel = min(value, max_fuel)
